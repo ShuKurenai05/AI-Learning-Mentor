@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Learning Mentor</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">N</div>
+        <div>
+          <div class="brand-name">Nova</div>
+          <div class="brand-sub">AI Learning Mentor</div>
+        </div>
+      </div>
+
+      <nav class="tabs">
+        <button class="tab-btn active" data-tab="chat">💬 Doubt Chat</button>
+        <button class="tab-btn" data-tab="plan">🗓️ Study Planner</button>
+      </nav>
+
+      <div class="profile-box">
+        <h4>Your Profile</h4>
+        <label>Name
+          <input id="p-name" type="text" placeholder="e.g. Aditi">
+        </label>
+        <label>Grade / Level
+          <input id="p-grade" type="text" placeholder="e.g. Class 10, B.Sc Year 2">
+        </label>
+        <label>Focus Subject
+          <input id="p-subject" type="text" placeholder="e.g. Mathematics">
+        </label>
+        <label>Preferred Language
+          <input id="p-language" type="text" placeholder="e.g. English, Hindi">
+        </label>
+        <p class="hint">Saved on this device only — sent with each question so Nova can personalise its answers.</p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <!-- Chat panel -->
+      <section id="panel-chat" class="panel active">
+        <header class="panel-header">
+          <h2>Ask Nova anything</h2>
+          <p>Get step-by-step help with doubts, concepts, or homework.</p>
+        </header>
+
+        <div id="chat-log" class="chat-log">
+          <div class="msg assistant">
+            <div class="bubble">Hi! I'm Nova, your AI learning mentor. Tell me your name and subject on the left, then ask me a doubt — I'll walk you through it step by step.</div>
+          </div>
+        </div>
+
+        <form id="chat-form" class="chat-input-row">
+          <textarea id="chat-input" rows="2" placeholder="Type your doubt or question..." required></textarea>
+          <button type="submit" id="chat-send">Send</button>
+        </form>
+      </section>
+
+      <!-- Study Planner panel -->
+      <section id="panel-plan" class="panel">
+        <header class="panel-header">
+          <h2>Build a study plan</h2>
+          <p>Tell Nova what you need to cover and get a day-by-day plan.</p>
+        </header>
+
+        <form id="plan-form" class="plan-form">
+          <div class="field-row">
+            <label>Subject
+              <input id="pl-subject" type="text" placeholder="e.g. Physics" required>
+            </label>
+            <label>Days available
+              <input id="pl-days" type="number" min="1" max="60" value="7" required>
+            </label>
+            <label>Hours / day
+              <input id="pl-hours" type="number" min="1" max="12" value="2" required>
+            </label>
+          </div>
+          <label>Topics to cover
+            <textarea id="pl-topics" rows="2" placeholder="e.g. Kinematics, Newton's Laws, Work-Energy Theorem"></textarea>
+          </label>
+          <label>Your current level (optional)
+            <input id="pl-level" type="text" placeholder="e.g. Beginner, need revision, exam in 2 weeks">
+          </label>
+          <button type="submit" id="plan-generate">Generate Plan</button>
+        </form>
+
+        <div id="plan-output" class="plan-output"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
